@@ -4,8 +4,7 @@ import { RestaurantsService } from 'app/restaurants/restaurants.service';
 
 @Component({
   selector: 'mt-restaurants',
-  templateUrl: './restaurants.component.html',
-  providers: [RestaurantsService]
+  templateUrl: './restaurants.component.html'
 })
 export class RestaurantsComponent implements OnInit {
 
