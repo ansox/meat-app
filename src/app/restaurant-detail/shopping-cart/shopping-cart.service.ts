@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from './cart-item.model';
-import { MenuItem } from 'app/restaurant-detail/menu-item.model';
+import { MenuItem } from 'app/restaurant-detail/menu-item.model'; 
+
 
 @Injectable()
 export class ShoppingCartService {
@@ -24,7 +25,7 @@ export class ShoppingCartService {
     });
 
     if (foundItem) {
-      foundItem.quantity++;
+      this.increaseQty(foundItem);
     } else {
       this.items.push(new CartItem(item));
     }
@@ -35,4 +36,17 @@ export class ShoppingCartService {
   }
 
   constructor() {}
+
+  increaseQty(item: CartItem): any {
+    item.quantity++;
+  }
+
+  decreaseQty(item: CartItem) {
+    item.quantity--;
+
+    if (item.quantity === 0) {
+      this.removeItem(item);
+    }
+  }
+
 }
